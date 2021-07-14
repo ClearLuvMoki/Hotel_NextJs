@@ -3,7 +3,7 @@ import { themeGet } from '@styled-system/theme-get';
 
 const BannerWrapper = styled.div`
   width: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
   position: relative;
   background-color: ${themeGet('color.1', '#ffffff')};
 
@@ -57,7 +57,8 @@ const BannerWrapper = styled.div`
 
   > div {
     position: relative;
-    min-height: 100vh;
+    min-height: 90vh;
+    height: 90vh
   }
 
   &:after {
@@ -75,7 +76,7 @@ const BannerWrapper = styled.div`
 
 export const SearchWrapper = styled.div`
   width: calc(100% - 60px);
-  padding: 28px 30px 30px;
+  padding: 0px 30px 30px;
   border-radius: 6px;
   background-color: ${themeGet('color.1', '#ffffff')};
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.08);

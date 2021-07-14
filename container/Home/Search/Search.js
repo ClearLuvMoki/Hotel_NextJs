@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import Container from 'components/UI/Container/Container';
-import Heading from 'components/UI/Heading/Heading';
+// import Heading from 'components/UI/Heading/Heading';
 import Text from 'components/UI/Text/Text';
 import GlideCarousel, {
   GlideSlide,
 } from 'components/UI/GlideCarousel/GlideCarousel';
 import SearchForm from './SearchForm';
 import BannerWrapper, { SearchWrapper } from './Search.style';
+import { Radio } from 'antd'
+
 
 const HomeSearch = ({ searchTitleStyle, searchDescriptionStyle }) => {
   return (
@@ -49,14 +51,17 @@ const HomeSearch = ({ searchTitleStyle, searchDescriptionStyle }) => {
 
       <Container>
         <SearchWrapper>
-          <Heading
+          {/* <Heading
             {...searchTitleStyle}
             content="Latest reviews. Lowest prices."
-          />
+          /> */}
+          <Radio.Group defaultValue="hotels" >
+            <Radio value="tree_time" key="tree_time">Tree Time</Radio>
+            <Radio value="hotels" key="hotels">Hotels</Radio>
+          </Radio.Group>
           <Text
             {...searchDescriptionStyle}
-            content="compares prices from 200+ booking sites to help you find the lowest
-      price on the right hotel for you."
+            content="动态获取"
           />
           <SearchForm />
         </SearchWrapper>
@@ -66,22 +71,22 @@ const HomeSearch = ({ searchTitleStyle, searchDescriptionStyle }) => {
 };
 
 HomeSearch.propTypes = {
-  searchTitleStyle: PropTypes.object,
+  // searchTitleStyle: PropTypes.object,
   searchDescriptionStyle: PropTypes.object,
 };
 
 HomeSearch.defaultProps = {
-  searchTitleStyle: {
-    color: '#2C2C2C',
-    fontSize: ['20px', '24px', '28px'],
-    lineHeight: ['28px', '30px', '30px'],
-    mb: '9px',
-  },
+  // searchTitleStyle: {
+  //   color: '#2C2C2C',
+  //   fontSize: ['20px', '24px', '28px'],
+  //   lineHeight: ['28px', '30px', '30px'],
+  //   mb: '9px',
+  // },
   searchDescriptionStyle: {
     color: '#2C2C2C',
     fontSize: '15px',
     lineHeight: '18px',
-    mb: '30px',
+    m: '20px 0px'
   },
 };
 

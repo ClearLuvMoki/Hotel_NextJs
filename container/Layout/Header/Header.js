@@ -49,7 +49,8 @@ const Header = ({ router }) => {
     setState((state) => !state);
   };
 
-  const headerType = router.pathname === '/' ? 'transparent' : 'default';
+  // const headerType = router.pathname === '/' ? 'transparent' : 'default';
+  const headerType = 'default';
 
   return (
     <HeaderWrapper>
@@ -57,12 +58,12 @@ const Header = ({ router }) => {
         <Navbar
           logo={
             <>
-              {headerType === 'transparent' && <LogoIcon />}
+              {/* {headerType === 'transparent' && <LogoIcon />} */}
               <Logo
                 withLink
                 linkTo="/"
-                src="/images/logo-alt.svg"
-                title="TripFinder."
+                // src="/images/logo-alt.svg"
+                title="PALWOO"
               />
             </>
           }
@@ -84,7 +85,7 @@ const Header = ({ router }) => {
                 withLink
                 linkTo="/"
                 src="/images/logo-alt.svg"
-                title="TripFinder."
+                title="PALWOO"
               />
             </>
             <NavbarSearch />

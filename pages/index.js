@@ -9,6 +9,8 @@ import SectionGrid from 'components/SectionGrid/SectionGrid';
 import { getAPIData } from 'library/helpers/get-api-data';
 import { getDeviceType } from 'library/helpers/get-device-type';
 import { LISTING_POSTS_PAGE, SINGLE_POST_PAGE } from 'settings/constant';
+
+
 import {
   HOME_PAGE_SECTIONS_ITEM_LIMIT_FOR_MOBILE_DEVICE,
   HOME_PAGE_SECTIONS_ITEM_LIMIT_FOR_TABLET_DEVICE,
