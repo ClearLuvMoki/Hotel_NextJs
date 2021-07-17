@@ -3,7 +3,7 @@ import { themeGet } from '@styled-system/theme-get';
 
 const BannerWrapper = styled.div`
   width: 100%;
-  min-height: 90vh;
+  min-height: 90%;
   position: relative;
   background-color: ${themeGet('color.1', '#ffffff')};
 

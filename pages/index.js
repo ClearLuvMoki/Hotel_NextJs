@@ -9,14 +9,15 @@ import SectionGrid from 'components/SectionGrid/SectionGrid';
 import { getAPIData } from 'library/helpers/get-api-data';
 import { getDeviceType } from 'library/helpers/get-device-type';
 import { LISTING_POSTS_PAGE, SINGLE_POST_PAGE } from 'settings/constant';
-
-
+import { getSettingInfo } from 'pages/api/getWay/index' //接口
 import {
   HOME_PAGE_SECTIONS_ITEM_LIMIT_FOR_MOBILE_DEVICE,
   HOME_PAGE_SECTIONS_ITEM_LIMIT_FOR_TABLET_DEVICE,
   HOME_PAGE_SECTIONS_ITEM_LIMIT_FOR_DESKTOP_DEVICE,
   HOME_PAGE_SECTIONS_COLUMNS_RESPONSIVE_WIDTH,
 } from 'settings/config';
+
+
 export default function HomePage({
   deviceType,
   // locationData,
@@ -78,6 +79,25 @@ export default function HomePage({
   );
 }
 
+// export async function getStaticProps() { 
+//   // const deviceType = getDeviceType(req);
+//   // const deviceType = 'desktop';
+//   let result = await getSettingInfo()
+//   console.log(result, 'result')
+//     // let { data: { data } } = result
+
+//   return {
+//     props: {
+//       // posts,
+//       deviceType,
+//       topHotelData:[],
+//       luxaryHotelData: [],
+//     },
+//   }
+
+
+// }
+
 export async function getServerSideProps(context) {
   const { req } = context;
   const apiUrl = [
@@ -103,11 +123,14 @@ export async function getServerSideProps(context) {
   if (pageData) {
     pageData.forEach((item, key) => {
       if (item.name === 'locationData') {
-        locationData = item.data ? [...item.data] : [];
+        locationData = []
+        // locationData = item.data ? [...item.data] : [];
       } else if (item.name === 'topHotelData') {
-        topHotelData = item.data ? [...item.data] : [];
+        topHotelData = []
+        // topHotelData = item.data ? [...item.data] : [];
       } else if (item.name === 'luxaryHotelData') {
-        luxaryHotelData = item.data ? [...item.data] : [];
+        luxaryHotelData = []
+        // luxaryHotelData = item.data ? [...item.data] : [];
       }
     });
   }

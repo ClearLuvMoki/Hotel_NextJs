@@ -6,7 +6,7 @@ export default function signInPage() {
   return (
     <>
       <Head>
-        <title>Sign In | TripFinder.</title>
+        <title>Sign In | PAlWOO</title>
       </Head>
       <SignIn />
     </>

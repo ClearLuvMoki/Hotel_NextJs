@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Router from 'next/router';
-import { Login } from '../pages/api/LogIn_LoginUp/index'
+import { Login, LogUp } from '../pages/api/LogIn_LoginUp/index'
 import { message } from 'antd'
+import store from 'untils/store.js' 
 
 export const AuthContext = React.createContext();
 
@@ -18,23 +19,27 @@ const AuthProvider = (props) => {
   const [user, setUser] = useState({});
 
   const signIn = (params) => {
-    console.log(params, 'signInparams')
-    // console.log(params, 'sign in form Props');
     // setUser(fakeUserData);
     // setLoggedIn(true);
-    // Router.push(`/`);
+    LogUp(params)
+    .then(
+      (res) => {
+        if (res?.code === 200) {
+          message.success('登陆成功')
+          store.set({ key: 'token', value: res?.data.token })
+          Router.push(`/`);
+        }
+      }
+    )
   };
 
   const signUp = (params) => {
     console.log(params, 'sign up form Props');
-    // setUser(fakeUserData);
-    // setLoggedIn(true);
-    // Login(params)
     Login(params)
       .then((res) =>  {
         if (res?.code === 200) {
-          message.success('登陆成功')
-          Router.push(`/`);
+          message.success('注册成功,跳转到登陆页面')
+          Router.push(`/sign-in`);
         }
       })
   };

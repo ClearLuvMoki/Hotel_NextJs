@@ -6,6 +6,8 @@ const GridCardWrapper = styled.div`
   border-radius: 6px;
   overflow: hidden;
   margin-bottom: 30px;
+  height: 100%;
+  min-height: 100%
 
   @media (max-width: 480px) {
     margin-bottom: 20px;
@@ -296,7 +298,7 @@ export const ButtonGroup = styled.div`
     svg {
       margin-right: 5px;
       width: 18px;
-      height: 18px;
+      height: 20px;
     }
   }
 `;

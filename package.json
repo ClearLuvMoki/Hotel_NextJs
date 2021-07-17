@@ -5,7 +5,9 @@
     "dev": "node ./service.js",
     "start": "next -p 3001",
     "build": "next build",
-    "serve": "next start -p 3001"
+    "serve": "next start -p 3001",
+    "preexport": "next build",
+    "export": "next export"
   },
   "dependencies": {
     "@glidejs/glide": "^3.4.1",

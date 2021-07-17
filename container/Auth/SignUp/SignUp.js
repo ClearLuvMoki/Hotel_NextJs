@@ -13,8 +13,12 @@ import Wrapper, {
   FormWrapper,
   BannerWrapper,
 } from '../Auth.style';
+import { getSettingInfo } from 'pages/api/getWay/index.js'
 
 const SignUp = () => {
+
+  
+
   return (
     <Wrapper>
       <FormWrapper>
@@ -27,9 +31,9 @@ const SignUp = () => {
         <Title>Welcome To TripFinder</Title>
         <TitleInfo>Please Register for your account</TitleInfo>
         <SignUpForm />
-        <Divider>Or Register Up With </Divider>
-        <SocialLogin />
-        <Text>
+        {/* <Divider>Or Register Up With </Divider>
+        <SocialLogin /> */}
+        <Text style={{marginTop: '20px'}}>
           Already Have an Account! &nbsp;
           <Link href={LOGIN_PAGE}>
             <a>Login</a>

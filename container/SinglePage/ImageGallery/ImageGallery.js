@@ -20,9 +20,10 @@ const PostImageGallery = () => {
         items={images}
         showPlayButton={false}
         showFullscreenButton={false}
-        showIndex={true}
+        showIndex={false}
         lazyLoad={true}
         slideDuration={550}
+        showThumbnails={false}
       />
     </ImageGalleryWrapper>
   );

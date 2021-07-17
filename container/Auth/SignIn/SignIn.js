@@ -15,6 +15,8 @@ import Wrapper, {
 } from '../Auth.style';
 
 const SignIn = () => {
+
+
   return (
     <Wrapper>
       <FormWrapper>
@@ -27,9 +29,9 @@ const SignIn = () => {
         <Title>Welcome Back</Title>
         <TitleInfo>Please log into your account</TitleInfo>
         <SignInForm />
-        <Divider>Or log in with </Divider>
-        <SocialLogin />
-        <Text>
+        {/* <Divider>Or log in with </Divider> */}
+        {/* <SocialLogin /> */}
+        <Text style={{marginTop: '20px'}}>
           Don't Have an Account?&nbsp;
           <Link href={REGISTRATION_PAGE}>
             <a>Registration</a>

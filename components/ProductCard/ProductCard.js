@@ -46,17 +46,18 @@ export default function ProductCard({
 }) {
   return (
     <GridCard
-      favorite={
-        <Favourite
-          onClick={(event) => {
-            console.log(event);
-          }}
-        />
-      }
+      // 点击收藏/喜欢
+      // favorite={
+      //   <Favourite
+      //     onClick={(event) => {
+      //       console.log(event, 'event');
+      //     }}
+      //   />
+      // }
       location={location.formattedAddress}
       title={title}
       price={`$${price}/Night - Free Cancellation`}
-      rating={<Rating rating={rating} ratingCount={ratingCount} type="bulk" />}
+      // rating={<Rating rating={rating} ratingCount={ratingCount} type="bulk" />}
       viewDetailsBtn={
         <Link href={`${link}/[slug]`} as={`${link}/${slug}`} prefetch={false}>
           <a>

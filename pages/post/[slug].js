@@ -15,10 +15,12 @@ import Review from 'container/SinglePage/Review/Review';
 import Reservation from 'container/SinglePage/Reservation/Reservation';
 import BottomReservation from 'container/SinglePage/Reservation/BottomReservation';
 import TopBar from 'container/SinglePage/TopBar/TopBar';
-import SinglePageWrapper, {
-  PostImage,
-} from 'container/SinglePage/SinglePageView.style';
+import SinglePageWrapper, { PostImage,} from 'container/SinglePage/SinglePageView.style';
 import PostImageGallery from 'container/SinglePage/ImageGallery/ImageGallery';
+import GlideCarousel, {
+  GlideSlide,
+} from 'components/UI/GlideCarousel/GlideCarousel';
+import { Element } from 'react-scroll';
 
 export default function SinglePostPage({ processedData, deviceType, query }) {
   const [href, setHref] = useState('');
@@ -51,7 +53,7 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
         <title>{pageTitle} | TripFinder.</title>
       </Head>
       <SinglePageWrapper>
-        <PostImage>
+        {/* <PostImage>
           <Image
             src="/images/single-post-bg.jpg"
             layout="fill"
@@ -66,20 +68,21 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
           >
             View Photos
           </Button>
-        </PostImage>
+        </PostImage> */}
 
         <TopBar title={title} shareURL={href} author={author} media={gallery} />
 
         <Container>
           <Row gutter={30} id="reviewSection" style={{ marginTop: 30 }}>
-            <Col xl={16}>
-              <Description
+            <Col xl={16} style={{height: '100%'}}>
+              {/* <Description
                 content={content}
                 title={title}
                 location={location}
                 rating={rating}
                 ratingCount={ratingCount}
-              />
+              /> */}
+              <PostImageGallery/>
               <Amenities amenities={amenities} />
               <Location location={processedData[0]} />
             </Col>
@@ -91,6 +94,13 @@ export default function SinglePostPage({ processedData, deviceType, query }) {
                   top={202}
                   bottomBoundary="#reviewSection"
                 >
+                  <Description
+                    // content={content}
+                    title={title}
+                    location={location}
+                    rating={rating}
+                    ratingCount={ratingCount}
+                  />
                   <Reservation />
                 </Sticky>
               ) : (

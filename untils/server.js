@@ -1,15 +1,15 @@
 import axios from 'axios'
 import { message } from 'antd'
+import store from './store'
 
 export const baseURL = process.env.NODE_ENV === 'development' ? '/api': 'https://www.hotelavish.com/api'
-
 
 
 /**
  * 创建实例 并设置默认超时时间 ms
  */
 const service = axios.create({
-    timeout: 100000, //默认10秒
+    timeout: 10000, //默认10秒
     baseURL:baseURL
 })
 
@@ -18,6 +18,11 @@ const service = axios.create({
  */
 service.interceptors.request.use(
     config => {
+        const token = store.get({ key: 'token' })
+        if (token) {
+            config.headers['Authorization'] = token
+        }
+        console.log(token, 'token')
         return config
     },
     error => {
