@@ -14,8 +14,9 @@ import Wrapper, {
   BannerWrapper,
 } from '../Auth.style';
 
-const SignIn = () => {
+const SignIn = ({indexData}) => {
 
+  console.log(indexData, 'indexData')
 
   return (
     <Wrapper>
@@ -23,8 +24,8 @@ const SignIn = () => {
         <Logo
           withLink
           linkTo="/"
-          src="/images/logo-alt.svg"
-          title="TripFinder."
+          src={indexData?.logoSmallUrl}
+          title={indexData?.title}
         />
         <Title>Welcome Back</Title>
         <TitleInfo>Please log into your account</TitleInfo>
@@ -41,9 +42,10 @@ const SignIn = () => {
       <BannerWrapper>
         <Image
           src="/images/login-page-bg.jpg"
+          // src={indexData?.logoFullUrl}
           layout="fill"
           objectFit="cover"
-          alt="Auth banner"
+          alt="logo"
         />
       </BannerWrapper>
     </Wrapper>

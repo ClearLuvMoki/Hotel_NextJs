@@ -7,6 +7,7 @@ import NavbarWrapper, {
   AvatarWrapper,
   AuthWrapper,
   MenuWrapper,
+  OtherMenuWrapper,
 } from './Navbar.style';
 
 const Navbar = ({
@@ -15,6 +16,7 @@ const Navbar = ({
   avatar,
   navMenu,
   authMenu,
+  otherMenu,
   profileMenu,
   isLogin,
   headerType,
@@ -45,6 +47,11 @@ const Navbar = ({
           {navMenu && (
             <MenuWrapper className="main_menu">{navMenu}</MenuWrapper>
           )}
+          {
+            otherMenu && (
+              <OtherMenuWrapper className="other_menu">{otherMenu}</OtherMenuWrapper>
+            )
+          }
           {isLogin && avatar ? (
             <AvatarWrapper>{profileMenu}</AvatarWrapper>
           ) : (
@@ -63,6 +70,7 @@ Navbar.propTypes = {
   navMenu: PropTypes.element,
   avatar: PropTypes.element,
   authMenu: PropTypes.element,
+  otherMenu: PropTypes.element,
   isLogin: PropTypes.bool,
   headerType: PropTypes.oneOf(['transparent', 'default']),
 };

@@ -30,12 +30,15 @@ function isObject(val) {
  * @todo 
  */
 function getItem(key) {
-    let val = sessionStorage.getItem(key)
-    try {
-        return JSON.parse(val)
-    } catch (e) {
-        return val
+    if(typeof window!=="undefined"){
+        let val = sessionStorage.getItem(key)
+        try {
+            return JSON.parse(val)
+        } catch (e) {
+            return val
+        }
     }
+
 }
 
 function setItem(key, val) {
@@ -79,6 +82,8 @@ function setItem(key, val) {
         return storage
     }
 }
-
-export default { set, get }
+function clear() {
+    sessionStorage.clear()
+}
+export default { set, get,clear }
 

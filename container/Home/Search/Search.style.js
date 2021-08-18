@@ -101,12 +101,13 @@ export const SearchWrapper = styled.div`
 
   > div {
     @media (min-width: 481px) {
-      margin-top: 30px;
+      margin-top: 10px;
     }
   }
 
   h2 {
     margin-bottom: 10px;
+    margin-top: 20px;
   }
 `;
 

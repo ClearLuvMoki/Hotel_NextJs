@@ -38,6 +38,8 @@ export default function ProductCard({
   rating,
   location,
   price,
+  logoUrl,
+  type,
   ratingCount,
   gallery,
   slug,
@@ -46,54 +48,19 @@ export default function ProductCard({
 }) {
   return (
     <GridCard
-      // 点击收藏/喜欢
-      // favorite={
-      //   <Favourite
-      //     onClick={(event) => {
-      //       console.log(event, 'event');
-      //     }}
-      //   />
-      // }
-      location={location.formattedAddress}
-      title={title}
-      price={`$${price}/Night - Free Cancellation`}
-      // rating={<Rating rating={rating} ratingCount={ratingCount} type="bulk" />}
+      title={'title'}
+      price={`$${price}/元`}
       viewDetailsBtn={
-        <Link href={`${link}/[slug]`} as={`${link}/${slug}`} prefetch={false}>
+        <Link href={`link/[slug]`} prefetch={false}>
           <a>
             <FiExternalLink /> View Details
           </a>
         </Link>
       }
     >
-      <Carousel
-        ssr
-        additionalTransfrom={0}
-        arrows
-        autoPlaySpeed={3000}
-        containerClass="container"
-        dotListClass=""
-        draggable
-        focusOnSelect={false}
-        infinite
-        itemClass=""
-        renderDotsOutside={false}
-        responsive={responsive}
-        deviceType={deviceType}
-        showDots={true}
-        sliderClass=""
-        slidesToSlide={1}
-      >
-        {gallery.map(({ url, title }, index) => (
-          <Image
-            key={index}
-            src={url}
-            alt={title}
-            layout="fill"
-            objectFit="cover"
-          />
-        ))}
-      </Carousel>
+      <img
+          src={logoUrl}
+      />
     </GridCard>
   );
 }

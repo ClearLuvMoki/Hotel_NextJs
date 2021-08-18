@@ -9,7 +9,8 @@ import SectionGrid from 'components/SectionGrid/SectionGrid';
 import { getAPIData } from 'library/helpers/get-api-data';
 import { getDeviceType } from 'library/helpers/get-device-type';
 import { LISTING_POSTS_PAGE, SINGLE_POST_PAGE } from 'settings/constant';
-import { getSettingInfo } from 'pages/api/getWay/index' //接口
+import { getSettingInfo,getFeaturedList } from 'pages/api/getWay/index' //接口
+import {useEffect,useState} from 'react'
 import {
   HOME_PAGE_SECTIONS_ITEM_LIMIT_FOR_MOBILE_DEVICE,
   HOME_PAGE_SECTIONS_ITEM_LIMIT_FOR_TABLET_DEVICE,
@@ -23,7 +24,23 @@ export default function HomePage({
   // locationData,
   topHotelData,
   luxaryHotelData,
+  indexData
 }) {
+  const [firstHotData,setFirstHotData]=useState([])
+  const [secondHotData,setSecondHotData]=useState([])
+
+  useEffect(()=>{
+    const dataFn=async ()=>{
+       getFeaturedList({type:1}).then(val=>{
+         setFirstHotData(val)
+       });
+       getFeaturedList({type:2}).then(val=>{
+         setSecondHotData(val)
+       });
+    }
+    dataFn()
+  },[])
+
   let limit;
 
   if (deviceType === 'mobile') {
@@ -39,9 +56,9 @@ export default function HomePage({
   return (
     <>
       <Head>
-        <title>TripFinder. | React Hotel Listing Template</title>
+        <title>{indexData?.title}</title>
       </Head>
-      <SearchArea />
+      <SearchArea indexData={indexData}/>
       {/* <LocationGrid data={locationData} deviceType={deviceType} /> */}
       <Container fluid={true}>
         <SectionTitle
@@ -55,7 +72,7 @@ export default function HomePage({
         <SectionGrid
           link={SINGLE_POST_PAGE}
           columnWidth={HOME_PAGE_SECTIONS_COLUMNS_RESPONSIVE_WIDTH}
-          data={topHotelData.slice(0, limit)}
+          data={firstHotData.slice(0, limit)}
           limit={limit}
           deviceType={deviceType}
         />
@@ -70,7 +87,7 @@ export default function HomePage({
         <SectionGrid
           link={SINGLE_POST_PAGE}
           columnWidth={HOME_PAGE_SECTIONS_COLUMNS_RESPONSIVE_WIDTH}
-          data={luxaryHotelData.slice(0, limit)}
+          data={secondHotData.slice(0, limit)}
           limit={limit}
           deviceType={deviceType}
         />
@@ -78,25 +95,6 @@ export default function HomePage({
     </>
   );
 }
-
-// export async function getStaticProps() { 
-//   // const deviceType = getDeviceType(req);
-//   // const deviceType = 'desktop';
-//   let result = await getSettingInfo()
-//   console.log(result, 'result')
-//     // let { data: { data } } = result
-
-//   return {
-//     props: {
-//       // posts,
-//       deviceType,
-//       topHotelData:[],
-//       luxaryHotelData: [],
-//     },
-//   }
-
-
-// }
 
 export async function getServerSideProps(context) {
   const { req } = context;
@@ -116,6 +114,8 @@ export async function getServerSideProps(context) {
   ];
   const deviceType = getDeviceType(req);
   const pageData = await getAPIData(apiUrl);
+  const indexData=await getSettingInfo();
+
   let locationData = [],
     topHotelData = [],
     luxaryHotelData = [];
@@ -135,6 +135,6 @@ export async function getServerSideProps(context) {
     });
   }
   return {
-    props: { deviceType, locationData, topHotelData, luxaryHotelData },
+    props: { deviceType, locationData, topHotelData, luxaryHotelData,indexData},
   };
 }

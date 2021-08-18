@@ -21,6 +21,7 @@ import HeaderWrapper, {
 } from './Header.style';
 
 const AuthMenu = dynamic(() => import('./AuthMenu'));
+const OtherMenu = dynamic(() => import('./Other'));
 const MainMenu = dynamic(() => import('./MainMenu'));
 const MobileMenu = dynamic(() => import('./MobileMenu'));
 const ProfileMenu = dynamic(() => import('./ProfileMenu'));
@@ -41,13 +42,14 @@ const LogoIcon = () => (
   </svg>
 );
 
-const Header = ({ router }) => {
+const Header = ({ router, indexData }) => {
   const { loggedIn } = useContext(AuthContext);
   const [{ searchVisibility }] = useContext(LayoutContext);
   const [state, setState] = useState(false);
   const sidebarHandler = () => {
     setState((state) => !state);
   };
+
 
   // const headerType = router.pathname === '/' ? 'transparent' : 'default';
   const headerType = 'default';
@@ -62,13 +64,14 @@ const Header = ({ router }) => {
               <Logo
                 withLink
                 linkTo="/"
-                // src="/images/logo-alt.svg"
-                title="PALWOO"
+                src={indexData?.logoSmallUrl}
+                title={indexData?.title}
               />
             </>
           }
           navMenu={<MainMenu />}
           authMenu={<AuthMenu />}
+          otherMenu={<OtherMenu />}
           isLogin={loggedIn}
           avatar={<Logo src={avatarImg} />}
           profileMenu={<ProfileMenu avatar={<Logo src={avatarImg} />} />}
@@ -80,12 +83,12 @@ const Header = ({ router }) => {
         <MobileNavbar className={headerType}>
           <LogoArea>
             <>
-              {headerType === 'transparent' && <LogoIcon />}
+              {/* {headerType === 'transparent' && <LogoIcon />} */}
               <Logo
                 withLink
                 linkTo="/"
-                src="/images/logo-alt.svg"
-                title="PALWOO"
+                src={indexData?.logoSmallUrl}
+                title={indexData?.title}
               />
             </>
             <NavbarSearch />

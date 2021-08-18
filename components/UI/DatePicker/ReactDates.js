@@ -71,6 +71,8 @@ class DateRangePickerBox extends Component {
       numberOfMonths,
       regular,
       noBorder,
+      calendarInfoPosition,
+      navPosition
     } = this.props;
 
     // Add all classs to an array **************
@@ -103,6 +105,8 @@ class DateRangePickerBox extends Component {
       block,
       regular,
       noBorder,
+      calendarInfoPosition,
+      navPosition
     };
 
     return (
@@ -134,6 +138,8 @@ DateRangePickerBox.propTypes = {
   isRTL: PropTypes.bool,
   /** orientation of the date-picker field */
   orientation: PropTypes.oneOf(['horizontal', 'vertical']),
+  calendarInfoPosition: PropTypes.oneOf(['top' , 'bottom' , 'before' , 'after']),
+  navPosition:  PropTypes.oneOf(['navPositionTop' , 'navPositionBottom']),
   /** anchorDirection of the date-picker field */
   anchorDirection: PropTypes.oneOf(['left', 'right']),
   /** withPortal of the date-picker field */

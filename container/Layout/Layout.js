@@ -22,7 +22,7 @@ import {
 
 const { Content } = LayoutWrapper;
 
-const Layout = ({ children, router }) => {
+const Layout = ({ children, router, indexData }) => {
   return (
     <LayoutWrapper>
       <LayoutProvider>
@@ -33,7 +33,7 @@ const Layout = ({ children, router }) => {
           <Content>{children}</Content>
         ) : (
           <>
-            <Header />
+            <Header indexData={indexData}/>
             <Content>{children}</Content>
             {router.pathname === LISTING_POSTS_PAGE ||
             router.pathname === PRICING_PLAN_PAGE ||
@@ -49,7 +49,7 @@ const Layout = ({ children, router }) => {
             router.pathname === AGENT_ACCOUNT_SETTINGS_PAGE ? (
               <div style={{ height: '33px' }} />
             ) : (
-              <Footer path={router.pathname === SINGLE_POST_PAGE} />
+              <Footer path={router.pathname === SINGLE_POST_PAGE} indexData={indexData}/>
             )}
           </>
         )}

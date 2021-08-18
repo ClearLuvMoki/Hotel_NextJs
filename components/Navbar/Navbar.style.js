@@ -210,7 +210,7 @@ export const MenuWrapper = styled.div`
 `;
 
 export const AuthWrapper = styled.div`
-  margin-left: 74px;
+  margin-left: 20px;
 
   ul,
   .ant-menu,
@@ -262,5 +262,40 @@ export const AuthWrapper = styled.div`
     }
   }
 `;
+
+export const OtherMenuWrapper = styled.div`
+  margin-left: 74px;
+
+  ul,
+  .ant-menu,
+  ul.ant-menu {
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: transparent;
+
+    li.ant-menu-item  {
+      margin: 10px;
+      padding: 5px;
+      height: auto;
+      margin-bottom: 0 !important;
+      background-color: white;
+
+      .anticon  {
+        font-size: 20px;
+        background-color: white;
+      }
+      &:hover {
+        color: ${themeGet('primary.0', '#008489')};
+        background-color: white;
+      }
+      &.visited {
+        color: ${themeGet('primary.0', '#008489')};
+        background-color: white;
+      }
+    }
+  }
+
+`
 
 export default NavbarWrapper;

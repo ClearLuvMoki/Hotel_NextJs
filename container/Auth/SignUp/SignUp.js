@@ -15,7 +15,7 @@ import Wrapper, {
 } from '../Auth.style';
 import { getSettingInfo } from 'pages/api/getWay/index.js'
 
-const SignUp = () => {
+const SignUp = ({indexData}) => {
 
   
 
@@ -25,8 +25,8 @@ const SignUp = () => {
         <Logo
           withLink
           linkTo="/"
-          src="/images/logo-alt.svg"
-          title="TripFinder."
+          src={indexData?.logoSmallUrl}
+          title={indexData?.title}
         />
         <Title>Welcome To TripFinder</Title>
         <TitleInfo>Please Register for your account</TitleInfo>
@@ -43,9 +43,10 @@ const SignUp = () => {
       <BannerWrapper>
         <Image
           src="/images/login-page-bg.jpg"
+          // src={indexData?.logoFullUrl}
           layout="fill"
           objectFit="cover"
-          alt="Auth banner"
+          alt="logo"
         />
       </BannerWrapper>
     </Wrapper>

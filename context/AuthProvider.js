@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Router from 'next/router';
 import { Login, LogUp } from '../pages/api/LogIn_LoginUp/index'
 import { message } from 'antd'
@@ -17,10 +17,18 @@ const fakeUserData = {
 const AuthProvider = (props) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
-
+    useEffect(()=>{
+        const token = store.get({ key: 'token' })
+        if(token){
+            setLoggedIn(true)
+        }else{
+            setLoggedIn(false)
+        }
+    },[])
   const signIn = (params) => {
-    // setUser(fakeUserData);
-    // setLoggedIn(true);
+    setUser(fakeUserData);
+    setLoggedIn(true);
+      store.clear();
     LogUp(params)
     .then(
       (res) => {
@@ -47,6 +55,7 @@ const AuthProvider = (props) => {
   const logOut = () => {
     setUser(null);
     setLoggedIn(false);
+      store.clear();
   };
 
   return (

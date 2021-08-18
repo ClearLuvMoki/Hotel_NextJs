@@ -10,15 +10,16 @@ import Layout from 'container/Layout/Layout';
 import AuthProvider from 'context/AuthProvider';
 import { SearchProvider } from 'context/SearchProvider';
 import 'antd/dist/antd.css';
+import { getSettingInfo } from 'pages/api/getWay/index' //接口
 
-function App({ Component, router, pageProps }) {
+function App({ Component, router, pageProps, indexData }) {
   const { query } = router;
 
   return (
     <AuthProvider>
       <SearchProvider query={query}>
         <ThemeProvider theme={theme}>
-          <Layout>
+          <Layout indexData={pageProps?.indexData}>
             <GlobalStyles />
             <Component {...pageProps} />
           </Layout>
@@ -27,5 +28,6 @@ function App({ Component, router, pageProps }) {
     </AuthProvider>
   );
 }
+
 
 export default App;
